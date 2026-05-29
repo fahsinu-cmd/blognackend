@@ -21,7 +21,7 @@ const createBlog = async (req, res) => {
       slug: createSlug(title),
       content,
       category,
-      image: req.file ? `uploads/${req.file.filename}` : "",
+      image: req.file ? `/uploads/${req.file.filename}` : "",
       author: req.user._id,
     });
 
@@ -139,7 +139,7 @@ const updateBlog = async (req, res) => {
     blog.category = req.body.category || blog.category;
 
     if (req.file) {
-      blog.image = `uploads/${req.file.filename}`;
+      blog.image = `/uploads/${req.file.filename}`;
     }
 
     const updatedBlog = await blog.save();
